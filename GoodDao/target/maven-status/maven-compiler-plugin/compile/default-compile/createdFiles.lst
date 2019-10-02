@@ -1,0 +1,7 @@
+dong\GW\list\Dao\UserDao.class
+dong\GW\list\Entity\ClientExample$Criteria.class
+dong\GW\list\Entity\ClientExample$Criterion.class
+dong\GW\list\Entity\ClientExample.class
+dong\GW\list\Dao\ClientMapper.class
+dong\GW\list\Entity\ClientExample$GeneratedCriteria.class
+dong\GW\list\Entity\Client.class
