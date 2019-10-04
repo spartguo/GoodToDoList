@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dong.GW.list.Dao.ClientMapper" >
+<mapper namespace="dong.GW.list.Mapper.ClientMapper" >
   <resultMap id="BaseResultMap" type="dong.GW.list.Entity.Client" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="Account" property="account" jdbcType="VARCHAR" />
@@ -77,7 +77,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from client
+    from Client
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,21 +88,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from client
+    from Client
     where Id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from client
+    delete from Client
     where Id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="dong.GW.list.Entity.ClientExample" >
-    delete from client
+    delete from Client
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="dong.GW.list.Entity.Client" >
-    insert into client (Id, Account, Password, 
+    insert into Client (Id, Account, Password, 
       NickName, CreateTime, Roles
       )
     values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
@@ -110,7 +110,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="dong.GW.list.Entity.Client" >
-    insert into client
+    insert into Client
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         Id,
@@ -153,13 +153,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="dong.GW.list.Entity.ClientExample" resultType="java.lang.Integer" >
-    select count(*) from client
+    select count(*) from Client
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update client
+    update Client
     <set >
       <if test="record.id != null" >
         Id = #{record.id,jdbcType=INTEGER},
@@ -185,7 +185,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update client
+    update Client
     set Id = #{record.id,jdbcType=INTEGER},
       Account = #{record.account,jdbcType=VARCHAR},
       Password = #{record.password,jdbcType=VARCHAR},
@@ -197,7 +197,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="dong.GW.list.Entity.Client" >
-    update client
+    update Client
     <set >
       <if test="account != null" >
         Account = #{account,jdbcType=VARCHAR},
@@ -218,7 +218,7 @@
     where Id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="dong.GW.list.Entity.Client" >
-    update client
+    update Client
     set Account = #{account,jdbcType=VARCHAR},
       Password = #{password,jdbcType=VARCHAR},
       NickName = #{nickname,jdbcType=VARCHAR},
