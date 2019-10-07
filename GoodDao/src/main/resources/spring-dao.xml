@@ -7,22 +7,22 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="dong.GW.list.Dao"/>
+    <context:component-scan base-package="dong.GW.list.Mapper"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/todolist?useUnicode=true&amp;characterEncoding=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC "/>
-        <property name="username" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="url" value="jdbc:mysql://139.199.159.100:3306/ToDoList?useUnicode=true&amp;characterEncoding=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC "/>
+        <property name="username" value="clientguo"/>
+        <property name="password" value="guoyuqi"/>
     </bean>
 
-    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sessionFactory" name="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="typeAliasesPackage" value="dong.GW.list.Entity"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
-        <property name="basePackage" value="dong.GW.list.Dao"/>
+        <property name="basePackage" value="dong.GW.list.Mapper"/>
     </bean>
 </beans>

@@ -12,6 +12,16 @@
     <artifactId>GoodBiz</artifactId>
     <dependencies>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.1.6.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit4-runner</artifactId>
+            <version>5.0.0-ALPHA</version>
+        </dependency>
+        <dependency>
             <groupId>dong.GW</groupId>
             <artifactId>GoodDao</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -20,11 +30,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>5.1.10.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>5.1.6.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
