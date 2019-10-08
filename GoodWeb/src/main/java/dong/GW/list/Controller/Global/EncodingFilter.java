@@ -1,9 +1,8 @@
-package dong.GW.list.Global;
+package dong.GW.list.Controller.Global;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.http.HTTPBinding;
 import java.io.IOException;
 
 public class EncodingFilter implements Filter {
