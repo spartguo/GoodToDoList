@@ -29,7 +29,7 @@ public class TokenManagerImpl implements TokenManager {
     @Override
     public String createToken(String account) {
         String token;
-        if (!StringUtils.isEmpty(account)) {
+        if (StringUtils.isEmpty(account)) {
             logger.error("============账号为空=============");
             throw new NullPointerException("账号为空");
         }
