@@ -6,5 +6,5 @@ public interface TokenManager {
 
     boolean checkToken(String token);
 
-    public void deleteToken(String token);
+    void deleteToken(String token);
 }

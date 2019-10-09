@@ -1,4 +1,4 @@
-package dong.GW.list.web.Global;
+package dong.GW.list.web.Common;
 
 public class Response {
 

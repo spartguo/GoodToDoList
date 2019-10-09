@@ -3,7 +3,7 @@ package dong.GW.list.web.Controller;
 import dong.GW.list.web.Dto.LoginInDto;
 import dong.GW.list.web.Dto.LoginOutDto;
 import dong.GW.list.service.LoginService;
-import dong.GW.list.web.Global.Response;
+import dong.GW.list.web.Common.Response;
 import dong.GW.list.web.Global.TokenManager;
 import dong.GW.list.Dao.Entity.Client;
 import org.springframework.beans.factory.annotation.Autowired;

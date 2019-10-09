@@ -1,5 +1,7 @@
 package dong.GW.list.web.Global;
 
+import dong.GW.list.web.Common.TokenInfo;
+import dong.GW.list.web.util.ConfigParser;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -11,7 +13,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public class TokenManagerImpl implements TokenManager {
 
-    private static Map<String, Date> tokenMap = new ConcurrentHashMap<>(256);
+    private final static long validRange = Long.parseLong(ConfigParser.getProperties("token.valid.time"));
+
+    private static Map<String, TokenInfo> tokenMap = new ConcurrentHashMap<>(256);
 
     /**
      * 登录
@@ -21,7 +25,8 @@ public class TokenManagerImpl implements TokenManager {
     @Override
     public String createToken(String account) {
         String token = UUID.randomUUID().toString();
-        tokenMap.put(token, new Date());
+        long time = System.currentTimeMillis() + validRange;
+        tokenMap.put(token, new TokenInfo(account,new Date(time)));
         return token;
     }
 
@@ -33,8 +38,8 @@ public class TokenManagerImpl implements TokenManager {
     @Override
     public boolean checkToken(String token) {
         if (!StringUtils.isEmpty(token) && tokenMap.containsKey(token)) {
-            Date validDate = tokenMap.get(token);
-            if (validDate.after(new Date())) {
+            TokenInfo tokenInfo = tokenMap.get(token);
+            if (tokenInfo.getValidDate().after(new Date())) {
                 return true;
             }
             this.deleteToken(token);
