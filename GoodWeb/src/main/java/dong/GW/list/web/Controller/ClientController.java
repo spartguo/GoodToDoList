@@ -3,7 +3,7 @@ package dong.GW.list.web.Controller;
 import dong.GW.list.web.Dto.ClientInDto;
 import dong.GW.list.web.Dto.ClientOutDto;
 import dong.GW.list.Dao.Entity.Client;
-import dong.GW.list.web.Global.Response;
+import dong.GW.list.web.Common.Response;
 import dong.GW.list.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
