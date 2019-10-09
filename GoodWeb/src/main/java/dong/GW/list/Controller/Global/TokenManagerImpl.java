@@ -3,6 +3,7 @@ package dong.GW.list.Controller.Global;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -10,18 +11,16 @@ import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public class TokenManagerImpl implements TokenManager {
 
-    private static Map<String, String> tokenMap = new ConcurrentHashMap<>();
-
+    private static Map<String, Date> tokenMap = new ConcurrentHashMap<>(256);
 
     /**
      * 登录
-     * @param username
      * @return
      */
     @Override
-    public String createToken(String username) {
+    public String createToken() {
         String token = UUID.randomUUID().toString();
-        tokenMap.put(token, username);
+        tokenMap.put(token, new Date());
         return token;
     }
 
@@ -32,7 +31,14 @@ public class TokenManagerImpl implements TokenManager {
      */
     @Override
     public boolean checkToken(String token) {
-        return !StringUtils.isEmpty(token) && tokenMap.containsKey(token);
+        if (!StringUtils.isEmpty(token) && tokenMap.containsKey(token)) {
+            Date validDate = tokenMap.get(token);
+            if (validDate.after(new Date())) {
+                return true;
+            }
+            this.deleteToken(token);
+        }
+        return false;
     }
 
 
