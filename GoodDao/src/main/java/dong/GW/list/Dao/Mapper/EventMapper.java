@@ -1,7 +1,7 @@
-package dong.GW.list.Mapper;
+package dong.GW.list.Dao.Mapper;
 
-import dong.GW.list.Entity.Event;
-import dong.GW.list.Entity.EventExample;
+import dong.GW.list.Dao.Entity.Event;
+import dong.GW.list.Dao.Entity.EventExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

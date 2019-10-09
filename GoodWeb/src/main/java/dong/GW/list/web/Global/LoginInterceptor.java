@@ -1,16 +1,12 @@
-package dong.GW.list.Controller.Global;
+package dong.GW.list.web.Global;
 
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONPObject;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 
 public class LoginInterceptor implements HandlerInterceptor {
 
@@ -22,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String url = httpServletRequest.getRequestURI();
         String token = httpServletRequest.getHeader("token");
 
-        if(url.toLowerCase().indexOf("login")>=0){
+        if(url.toLowerCase().indexOf("login")>=0 || url.toLowerCase().indexOf("sign")>=0){
             return true;
         }
 
@@ -30,10 +26,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        PrintWriter printWriter = httpServletResponse.getWriter();
-        String response = JSON.toJSONString(new Response().failure("Need to login!!!"));
-        printWriter.append(response);
-        return false;
+        throw new Exception("未登录！");
     }
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {

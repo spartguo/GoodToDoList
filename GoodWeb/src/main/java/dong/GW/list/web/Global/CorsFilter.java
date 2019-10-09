@@ -1,4 +1,4 @@
-package dong.GW.list.Controller.Global;
+package dong.GW.list.web.Global;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.junit.gen5.commons.util.StringUtils;

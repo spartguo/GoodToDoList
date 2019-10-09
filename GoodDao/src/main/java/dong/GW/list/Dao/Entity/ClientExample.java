@@ -1,4 +1,4 @@
-package dong.GW.list.Entity;
+package dong.GW.list.Dao.Entity;
 
 import java.util.ArrayList;
 import java.util.Date;

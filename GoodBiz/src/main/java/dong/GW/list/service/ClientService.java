@@ -1,8 +1,8 @@
 package dong.GW.list.service;
 
-import dong.GW.list.Entity.Client;
+import dong.GW.list.Dao.Entity.Client;
 
 public interface ClientService {
-    void test();
-    void editinfo(Client client);
+    void editinfo(Client client) throws Exception;
+    Client getInfo(Client client);
 }

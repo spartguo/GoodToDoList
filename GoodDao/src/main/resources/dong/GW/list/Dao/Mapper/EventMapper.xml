@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="dong.GW.list.Mapper.EventMapper" >
-  <resultMap id="BaseResultMap" type="dong.GW.list.Entity.Event" >
+<mapper namespace="dong.GW.list.Dao.Mapper.EventMapper" >
+  <resultMap id="BaseResultMap" type="dong.GW.list.Dao.Entity.Event" >
     <id column="Id" property="id" jdbcType="INTEGER" />
     <result column="DeadLine" property="deadline" jdbcType="TIMESTAMP" />
     <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
@@ -9,7 +9,7 @@
     <result column="State" property="state" jdbcType="INTEGER" />
     <result column="Priority" property="priority" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="dong.GW.list.Entity.Event" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="dong.GW.list.Dao.Entity.Event" extends="BaseResultMap" >
     <result column="Content" property="content" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -76,7 +76,7 @@
   <sql id="Blob_Column_List" >
     Content
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="dong.GW.list.Entity.EventExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="dong.GW.list.Dao.Entity.EventExample" >
     select
     <if test="distinct" >
       distinct
@@ -93,7 +93,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="dong.GW.list.Entity.EventExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="dong.GW.list.Dao.Entity.EventExample" >
     select
     <if test="distinct" >
       distinct
@@ -120,13 +120,13 @@
     delete from Todo_List
     where Id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="dong.GW.list.Entity.EventExample" >
+  <delete id="deleteByExample" parameterType="dong.GW.list.Dao.Entity.EventExample" >
     delete from Todo_List
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="dong.GW.list.Entity.Event" >
+  <insert id="insert" parameterType="dong.GW.list.Dao.Entity.Event" >
     insert into Todo_List (Id, DeadLine, CreateTime, 
       ClientId, State, Priority, 
       Content)
@@ -134,7 +134,7 @@
       #{clientid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="dong.GW.list.Entity.Event" >
+  <insert id="insertSelective" parameterType="dong.GW.list.Dao.Entity.Event" >
     insert into Todo_List
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -183,7 +183,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="dong.GW.list.Entity.EventExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="dong.GW.list.Dao.Entity.EventExample" resultType="java.lang.Integer" >
     select count(*) from Todo_List
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -243,7 +243,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="dong.GW.list.Entity.Event" >
+  <update id="updateByPrimaryKeySelective" parameterType="dong.GW.list.Dao.Entity.Event" >
     update Todo_List
     <set >
       <if test="deadline != null" >
@@ -267,7 +267,7 @@
     </set>
     where Id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="dong.GW.list.Entity.Event" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="dong.GW.list.Dao.Entity.Event" >
     update Todo_List
     set DeadLine = #{deadline,jdbcType=TIMESTAMP},
       CreateTime = #{createtime,jdbcType=TIMESTAMP},
@@ -277,7 +277,7 @@
       Content = #{content,jdbcType=LONGVARCHAR}
     where Id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="dong.GW.list.Entity.Event" >
+  <update id="updateByPrimaryKey" parameterType="dong.GW.list.Dao.Entity.Event" >
     update Todo_List
     set DeadLine = #{deadline,jdbcType=TIMESTAMP},
       CreateTime = #{createtime,jdbcType=TIMESTAMP},

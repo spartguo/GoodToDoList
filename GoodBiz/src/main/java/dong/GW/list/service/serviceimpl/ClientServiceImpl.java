@@ -1,16 +1,12 @@
-package dong.GW.list.serviceimpl;
+package dong.GW.list.service.serviceimpl;
 
-import dong.GW.list.Entity.Client;
-import dong.GW.list.Entity.ClientExample;
-import dong.GW.list.Mapper.ClientMapper;
+import dong.GW.list.Dao.Entity.Client;
+import dong.GW.list.Dao.Entity.ClientExample;
+import dong.GW.list.Dao.Mapper.ClientMapper;
 import dong.GW.list.service.ClientService;
-import javafx.scene.shape.Path;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.StringUtils;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -19,17 +15,16 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientMapper clientMapper;
 
-    @Test
-    public void test() {
-        Client cc = new Client();
-        cc.setId(2);
-        ClientExample ce = new ClientExample();
-        clientMapper.selectByPrimaryKey(cc.getId());
-//        System.out.println(cc.getNickname());
+    public void editinfo(Client inDto) throws Exception {
+        Client client = new Client();
+        ClientExample clientExample = new ClientExample();
+        if (StringUtils.isEmpty(inDto.getNickname())){
+            throw new Exception("修改不能为空！");
+        }
     }
 
-    public void editinfo(Client client) {
-
+    public Client getInfo(Client inDto) {
+        Client client = new Client();
+        return clientMapper.selectByPrimaryKey(inDto.getId());
     }
-
 }

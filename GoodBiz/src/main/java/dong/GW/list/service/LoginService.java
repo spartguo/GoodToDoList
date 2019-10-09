@@ -1,8 +1,9 @@
-package dong.GW.list.Controller.Global;
+package dong.GW.list.service;
 
 import dong.GW.list.Dao.Entity.Client;
 
 public interface LoginService {
 
-    public Client login(String account, String password);
+     Client login(String account, String password)throws Exception;
+     Client sign(String account,String password)throws Exception;
 }

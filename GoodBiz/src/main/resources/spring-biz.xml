@@ -15,7 +15,7 @@
     <import resource="spring-dao.xml"/>
 
 
-    <context:component-scan base-package="dong.GW.list"/>
+    <context:component-scan base-package="dong.GW.list.service.serviceimpl"/>
     <aop:aspectj-autoproxy/>
 
     <bean id="transationManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

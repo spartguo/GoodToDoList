@@ -1,19 +1,18 @@
-package dong.GW.list.Dao.Entity;
+package dong.GW.list.web.Dto;
 
 import java.util.Date;
 
-public class Client {
+public class LoginOutDto {
     private Integer id;
 
     private String account;
-
-    private String password;
 
     private String nickname;
 
     private Date createtime;
 
     private Integer roles;
+    private String token;
 
     public Integer getId() {
         return id;
@@ -28,15 +27,7 @@ public class Client {
     }
 
     public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.account = account;
     }
 
     public String getNickname() {
@@ -44,7 +35,7 @@ public class Client {
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname == null ? null : nickname.trim();
+        this.nickname = nickname;
     }
 
     public Date getCreatetime() {
@@ -61,5 +52,13 @@ public class Client {
 
     public void setRoles(Integer roles) {
         this.roles = roles;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

@@ -3,7 +3,6 @@ package dong.GW.list.Controller.Global;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,12 +14,13 @@ public class TokenManagerImpl implements TokenManager {
 
     /**
      * 登录
+     * @param username
      * @return
      */
     @Override
-    public String createToken() {
+    public String createToken(String account) {
         String token = UUID.randomUUID().toString();
-        tokenMap.put(token, new Date());
+        tokenMap.put(token, account);
         return token;
     }
 

@@ -1,4 +1,4 @@
-package dong.GW.list.Controller.Global;
+package dong.GW.list.web.Global;
 
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;

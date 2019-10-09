@@ -1,7 +1,7 @@
-package dong.GW.list.Mapper;
+package dong.GW.list.Dao.Mapper;
 
-import dong.GW.list.Entity.Client;
-import dong.GW.list.Entity.ClientExample;
+import dong.GW.list.Dao.Entity.Client;
+import dong.GW.list.Dao.Entity.ClientExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
