@@ -34,7 +34,7 @@ public class TokenManagerImpl implements TokenManager {
             throw new NullPointerException("账号为空");
         }
         // 将已有的账号信息删掉，如果以登陆
-        if (!accMap.containsKey(account)) {
+        if (accMap.containsKey(account)) {
             token = accMap.get(account);
             tokenMap.remove(token);
             accMap.remove(account);
