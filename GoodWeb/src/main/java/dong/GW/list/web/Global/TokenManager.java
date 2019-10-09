@@ -1,4 +1,4 @@
-package dong.GW.list.Controller.Global;
+package dong.GW.list.web.Global;
 
 public interface TokenManager {
 
