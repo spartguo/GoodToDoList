@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 @Service
 public class ClientServiceImpl implements ClientService {
 
@@ -15,16 +17,38 @@ public class ClientServiceImpl implements ClientService {
     @Autowired
     private ClientMapper clientMapper;
 
-    public void editinfo(Client inDto) throws Exception {
+    /**
+     * 通过账号修改用户信息(主要针对用户)
+     * @param inDto
+     * @throws Exception
+     */
+
+    public void editInfoByAccount(Client inDto) throws Exception {
         Client client = new Client();
         ClientExample clientExample = new ClientExample();
         if (StringUtils.isEmpty(inDto.getNickname())){
             throw new Exception("修改不能为空！");
         }
+        client.setNickname(inDto.getNickname());
+        ClientExample.Criteria criteria = clientExample.createCriteria();
+        criteria.andAccountEqualTo(inDto.getAccount());
+        clientMapper.updateByExample(client,clientExample);
     }
 
+    /**
+     * 通过账号查找用户信息
+     * @param inDto
+     * @return
+     */
+
     public Client getInfo(Client inDto) {
-        Client client = new Client();
-        return clientMapper.selectByPrimaryKey(inDto.getId());
+        ClientExample clientExample = new ClientExample();
+        ClientExample.Criteria criteria = clientExample.createCriteria();
+        criteria.andAccountEqualTo(inDto.getAccount());
+        List<Client> list = clientMapper.selectByExample(clientExample);
+        if (list.size() == 0){
+            throw new  NullPointerException("无数据！");
+        }
+        return list.get(0);
     }
 }

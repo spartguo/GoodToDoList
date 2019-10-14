@@ -12,8 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 @Repository
 public class TokenManagerImpl implements TokenManager {
 
-    private final static Logger logger = Logger.getLogger(TokenManager.class);
-
     private final static long validRange = Long.parseLong(ConfigParser.getProperties("token.valid.time"));
 
     private static Map<String, TokenInfo> tokenMap = new ConcurrentHashMap<>(256);
@@ -29,11 +27,7 @@ public class TokenManagerImpl implements TokenManager {
     @Override
     public String createToken(String account) {
         String token;
-        if (StringUtils.isEmpty(account)) {
-            logger.error("============账号为空=============");
-            throw new NullPointerException("账号为空");
-        }
-        // 将已有的账号信息删掉，如果以登陆
+        // 将已有的账号信息删掉，如果已登陆
         if (accMap.containsKey(account)) {
             token = accMap.get(account);
             tokenMap.remove(token);
@@ -67,6 +61,10 @@ public class TokenManagerImpl implements TokenManager {
         return false;
     }
 
+    @Override
+    public TokenInfo getAccountByToken(String token) {
+        return tokenMap.get(token);
+    }
 
     /**
      * 退出登录

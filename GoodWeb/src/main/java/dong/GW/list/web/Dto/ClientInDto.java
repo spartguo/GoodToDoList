@@ -7,6 +7,16 @@ public class ClientInDto {
 
     private String nickname;
 
+    private Integer roles;
+
+    public Integer getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Integer roles) {
+        this.roles = roles;
+    }
+
     public Integer getId() {
         return id;
     }

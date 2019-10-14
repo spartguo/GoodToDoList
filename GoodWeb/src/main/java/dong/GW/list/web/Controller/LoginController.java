@@ -6,7 +6,9 @@ import dong.GW.list.service.LoginService;
 import dong.GW.list.web.Common.Response;
 import dong.GW.list.web.Global.TokenManager;
 import dong.GW.list.Dao.Entity.Client;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoginController {
+
+    private final static Logger logger = Logger.getLogger(TokenManager.class);
 
     @Autowired
     TokenManager tokenManager;
@@ -34,6 +38,11 @@ public class LoginController {
 
         if(client == null){
             throw new Exception("账号或密码错误！");
+        }
+
+        if (StringUtils.isEmpty(inDto.getAccount())) {
+            logger.error("============账号为空=============");
+            throw new NullPointerException("账号为空");
         }
 
         //设置登录状态
@@ -59,7 +68,5 @@ public class LoginController {
         Client client = loginService.sign(inDto.getAccount(),inDto.getPassword());
         return new Response().success("注册成功！");
     }
-
-
 
 }
